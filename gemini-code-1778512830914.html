@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendWire | Influencer Marketing Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --accent: #f43f5e;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * { box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            /* Aesthetic Animated Gradient Background */
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e1b4b);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation Header */
+        header {
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        .logo span { color: var(--accent); }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        nav a:hover { opacity: 1; color: var(--accent); }
+
+        /* Content Sections */
+        .container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden { display: none !important; }
+
+        /* Choice Grid */
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .choice-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            padding: 30px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .choice-box:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Form Styling */
+        input, select {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4); }
+
+        /* Contact Page Specifics */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .facebook { background: #1877F2; }
+        .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .twitter { background: #000000; }
+        .social-btn:hover { filter: brightness(1.2); transform: translateX(10px); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">TREND<span>WIRE</span></div>
+        <nav>
+            <a href="#" onclick="navigateTo('home')">Home</a>
+            <a href="#" onclick="navigateTo('contact')">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="section-home" class="glass-card">
+            <h2>Welcome to the Future</h2>
+            <p>Choose your path to get started with TrendWire.</p>
+            <div class="choice-grid">
+                <div class="choice-box" onclick="showForm('brand')">
+                    <div style="font-size: 2rem;">🏢</div>
+                    <h3>Brand</h3>
+                    <p>I want to grow</p>
+                </div>
+                <div class="choice-box" onclick="showForm('influencer')">
+                    <div style="font-size: 2rem;">🤳</div>
+                    <h3>Influencer</h3>
+                    <p>I want to create</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-brand-form" class="glass-card hidden">
+            <h2>Brand Inquiry</h2>
+            <p>Scale your product with TrendWire.</p>
+            <form id="brandForm" onsubmit="handleFormSubmit(event, 'Brand')">
+                <input type="text" id="bName" placeholder="Full Name" required>
+                <input type="text" id="bProduct" placeholder="Product Name" required>
+                <input type="email" id="bEmail" placeholder="Work Email" required>
+                <input type="tel" id="bPhone" placeholder="Contact Number" required>
+                <button type="submit" class="submit-btn">Send Proposal</button>
+            </form>
+            <a href="#" style="color: #94a3b8; display: block; margin-top: 20px;" onclick="navigateTo('home')">Back</a>
+        </div>
+
+        <div id="section-influencer-form" class="glass-card hidden">
+            <h2>Influencer Onboarding</h2>
+            <p>Tell us what drives your content.</p>
+            <form id="influencerForm" onsubmit="handleFormSubmit(event, 'Influencer')">
+                <input type="text" id="iName" placeholder="Full Name" required>
+                <input type="email" id="iEmail" placeholder="Email Address" required>
+                <input type="tel" id="iPhone" placeholder="Contact Number" required>
+                <select id="iPassion" required>
+                    <option value="" disabled selected>Select your Passion</option>
+                    <option>Lifestyle & Fashion</option>
+                    <option>Gaming & Tech</option>
+                    <option>Fitness & Health</option>
+                    <option>Comedy & Vlogs</option>
+                </select>
+                <button type="submit" class="submit-btn">Apply to Roster</button>
+            </form>
+            <a href="#" style="color: #94a3b8; display: block; margin-top: 20px;" onclick="navigateTo('home')">Back</a>
+        </div>
+
+        <div id="section-contact" class="glass-card hidden">
+            <h2>Let's Connect</h2>
+            <p>Find us on our official channels.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1JTfum3zrh/" target="_blank" class="social-btn facebook">Facebook</a>
+                <a href="https://www.instagram.com/tren_dwire?igsh=M3htdGt0YWI2bmdl" target="_blank" class="social-btn instagram">Instagram</a>
+                <a href="https://x.com/TrendWire14" target="_blank" class="social-btn twitter">X (formerly Twitter)</a>
+            </div>
+            <a href="#" style="color: #94a3b8; display: block; margin-top: 20px;" onclick="navigateTo('home')">Back Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Navigation Logic
+        function navigateTo(section) {
+            // Hide all sections
+            document.querySelectorAll('.glass-card').forEach(card => card.classList.add('hidden'));
+            // Show target section
+            document.getElementById('section-' + section).classList.remove('hidden');
+        }
+
+        function showForm(type) {
+            navigateTo(type + '-form');
+        }
+
+        // Data Capture & Logic
+        function handleFormSubmit(event, type) {
+            event.preventDefault();
+            
+            let formData = {};
+            if (type === 'Brand') {
+                formData = {
+                    category: 'Brand',
+                    name: document.getElementById('bName').value,
+                    product: document.getElementById('bProduct').value,
+                    email: document.getElementById('bEmail').value,
+                    phone: document.getElementById('bPhone').value
+                };
+            } else {
+                formData = {
+                    category: 'Influencer',
+                    name: document.getElementById('iName').value,
+                    email: document.getElementById('iEmail').value,
+                    phone: document.getElementById('iPhone').value,
+                    passion: document.getElementById('iPassion').value
+                };
+            }
+
+            // GRAB AND SAVE DATA
+            // This saves to LocalStorage so you can view it in your browser settings
+            let database = JSON.parse(localStorage.getItem('trendwire_leads') || "[]");
+            database.push(formData);
+            localStorage.setItem('trendwire_leads', JSON.stringify(database));
+
+            console.log("New Lead Grabbed:", formData);
+            alert(`Success! We've saved your info, ${formData.name}.`);
+            
+            // Return to home
+            location.reload();
+        }
+    </script>
+</body>
+</html>
